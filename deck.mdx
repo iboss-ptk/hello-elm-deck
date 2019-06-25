@@ -1,0 +1,98 @@
+import { syntaxHighlighterPrism } from '@mdx-deck/themes'
+import { future } from '@mdx-deck/themes'
+import { Appear } from '@mdx-deck/components'
+import { FullScreenCode } from '@mdx-deck/layouts'
+
+export const themes = [ syntaxHighlighterPrism ]
+
+
+# Hello, Elm!
+
+![Elm logo](https://abadi199.github.io/elm-conf/images/elm-logo.png)
+
+---
+
+## What is Elm?
+
+---
+
+_Elm is a functional language that compiles to JavaScript,_
+
+_focusing on building frontend application._
+
+---
+
+## Why should I care?
+
+---
+
+```
+❌ TypeError: undefined is not a function
+```
+
+---
+
+```js
+const add = (a, b) => a + b
+```
+
+---
+
+```elm
+add a b = a + b
+```
+
+---
+
+```elm
+add : Int -> Int -> Int
+add a b = a + b
+```
+
+---
+```elm
+add 1 2 -- 3 : Int
+```
+---
+
+```elm
+add 1 -- <function> : Int -> Int
+```
+---
+
+```elm
+-- add : Int -> Int -> Int
+-- add : Int -> (Int -> Int)
+-- add 1 : Int -> Int
+```
+---
+```js
+const add = (a) => (b) => a + b
+
+add(1)(2)
+
+add(1)
+```
+---
+
+```elm
+inc : Int -> Int
+inc = add 1
+```
+---
+
+```elm
+inc 5 -- 6 : Int
+```
+
+---
+
+## Modeling Application State
+
+---
+
+```elm
+type Switch
+    = On
+    | Off
+```

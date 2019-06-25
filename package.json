@@ -2,5 +2,8 @@
   "name": "deck",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "mdx-deck": "^2.4.0"
+  }
 }
