@@ -3,12 +3,12 @@ import { future } from '@mdx-deck/themes'
 import { Appear } from '@mdx-deck/components'
 import { FullScreenCode } from '@mdx-deck/layouts'
 
-export const themes = [ syntaxHighlighterPrism ]
+export const themes = [ future, syntaxHighlighterPrism ]
 
 
 # Hello, Elm!
 
-![Elm logo](https://abadi199.github.io/elm-conf/images/elm-logo.png)
+<img width="400px" src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Elm_logo.svg" />
 
 ---
 
@@ -16,13 +16,133 @@ export const themes = [ syntaxHighlighterPrism ]
 
 ---
 
-_Elm is a functional language that compiles to JavaScript,_
-
-_focusing on building frontend application._
+_Elm is a statically typed functional language that compiles to JavaScript, focusing on building frontend application._
 
 ---
 
-## Why should I care?
+## How does it looks like?
+
+---
+
+this is javascript
+
+```js
+const add = (a, b) => a + b
+```
+
+---
+
+this is elm
+
+```elm
+add a b = a + b
+```
+
+---
+
+### But.. where is type?
+
+---
+
+### type inference ftw!
+
+---
+
+```elm
+add : number -> number -> number
+add a b = a + b
+```
+
+
+---
+```elm
+add 1 2 -- 3 : number
+```
+---
+
+what does
+
+`->`
+
+mean
+
+---
+
+why not..
+
+```elm
+add : (number, number) -> number
+```
+
+but
+
+```elm
+add : number -> number -> number
+```
+
+?
+
+---
+
+```elm
+add 1
+-- <function> : number -> number
+```
+
+---
+
+cuz
+
+
+```elm
+add : number -> number -> number
+```
+
+=
+
+```elm
+add : number -> (number -> number)
+```
+
+---
+
+## Everything is expression
+
+---
+
+```elm
+oneIsPositive =
+    if 1 > 0 then
+        "positive"
+
+    else
+        "not positive"
+```
+
+---
+
+```elm
+checkIfPositive n =
+    if n > 0 then
+        "positive"
+
+    else
+        "not positive"
+
+oneIsPositive = checkIfPositive 1
+```
+
+---
+
+## NULL / UNDEFINED / NaN
+
+---
+
+```js
+const xs = []
+
+xs[0]
+```
 
 ---
 
@@ -33,66 +153,69 @@ _focusing on building frontend application._
 ---
 
 ```js
-const add = (a, b) => a + b
+const numbers = []
+
+numbers[0] * 10
+```
+
+---
+
+![undefined NaN](https://user-images.githubusercontent.com/45589364/49783105-bae26900-fd3e-11e8-9b3f-63874e2fa12f.png)
+
+---
+
+```elm
+List.head []
 ```
 
 ---
 
 ```elm
-add a b = a + b
+List.head []
+-- Nothing : Maybe a
 ```
 
 ---
 
 ```elm
-add : Int -> Int -> Int
-add a b = a + b
+List.head ["hello", "world"]
+-- Just "hello" : Maybe String
 ```
-
----
-```elm
-add 1 2 -- 3 : Int
-```
----
-
-```elm
-add 1 -- <function> : Int -> Int
-```
----
-
-```elm
--- add : Int -> Int -> Int
--- add : Int -> (Int -> Int)
--- add 1 : Int -> Int
-```
----
-```js
-const add = (a) => (b) => a + b
-
-add(1)(2)
-
-add(1)
-```
----
-
-```elm
-inc : Int -> Int
-inc = add 1
-```
----
-
-```elm
-inc 5 -- 6 : Int
-```
-
----
-
-## Modeling Application State
 
 ---
 
 ```elm
-type Switch
-    = On
-    | Off
+type Maybe a
+    = Just a
+    | Nothing
 ```
+
+---
+
+compiler that talks to you
+
+![error](error.png)
+
+---
+
+## Elm Architechture
+
+---
+
+"The Elm Architecture is a simple pattern for architecting webapps. It is great for modularity, code reuse, and testing. Ultimately, it makes it easy to create complex web apps that stay healthy as you refactor and add features."
+
+---
+
+model / view / update
+
+---
+
+## Let's code
+
+<iframe style={{ backgroundColor: "white" }}
+  src="http://localhost:8000/"
+/>
+
+---
+
+I will stop here ...
